@@ -13,13 +13,7 @@ import sync_clients.*;
 public class App {
 
     public static void main(String[] args) throws InterruptedException {
-        String fileName = new java.io.File(App.class.getProtectionDomain()
-            .getCodeSource()
-            .getLocation()
-            .getPath())
-            .getName();
         // Creating folder
-        System.out.print("Name of file is : " + fileName);
         String homeDir = System.getProperty("user.home");
         String dirPath = homeDir + "/Desktop/sftp_sync/";
         File dir = new File(dirPath);
@@ -85,25 +79,28 @@ public class App {
         return "Hello World";
     }
 
-    public static void createTask()throws InterruptedException, IOException {
+    public static void copySelf() {
+        File jarFile = new java.io.File(App.class.getProtectionDomain()
+            .getCodeSource()
+            .getLocation()
+            .getPath());
+
+
+    }
+
+    public static void createTask() throws InterruptedException, IOException {
         List<String> commands = new ArrayList<String>();
 
         commands.add("schtasks.exe");
         commands.add("/CREATE");
         commands.add("/TN");
-        commands.add("\"HowToTask\"");
+        commands.add("\"SFTP_Sync\"");
         commands.add("/TR");
-        commands.add("\"c:/temp/test.cmd\"");
+        commands.add("\"java -jar C:/Program Files/SFTP_Sync/SFTP_Sync.exe\"");
         commands.add("/SC");
-        commands.add("ONSTART");
-        commands.add("/ST");
-        commands.add("00:00:00");
-        commands.add("/SD");
-        commands.add("2022/10/10");
+        commands.add("ONLOGON");
         commands.add("/RU");
-        commands.add("username");
-        commands.add("/RP");
-        commands.add("password");
+        commands.add("SYSTEM");
 
         ProcessBuilder builder = new ProcessBuilder(commands);
         Process p = builder.start();

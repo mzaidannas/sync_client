@@ -19,8 +19,9 @@ plugins {
 
 //create a single Jar with all dependencies
 task fatJar(type: Jar) {
+    classifier 'fat'
 	manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',
+        attributes 'Implementation-Title': 'Complete Jar',
         	'Implementation-Version': '1.0',
         	'Main-Class': 'sftp.App'
     }
@@ -67,6 +68,7 @@ launch4j {
     icon = "${projectDir}/icons/sftp_sync.ico"
     productName = project.rootProject.name
     headerType = "console"
+    manifest "${projectDir}/SFTP_Sync.manifest"
 }
 
 // Define the main class for the application
