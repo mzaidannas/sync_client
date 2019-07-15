@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "sftp.App",
+            "projectName": "sftp"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - External Terminal",
+            "request": "launch",
+            "console": "externalTerminal",
+            "mainClass": "sftp.App",
+            "projectName": "sftp"
+        }
+    ]
+}
