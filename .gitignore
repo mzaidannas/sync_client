@@ -18,8 +18,5 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
-# Ignore java build files
-bin
-
 # Ignore settings IDE directory
 .settings
