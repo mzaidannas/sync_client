@@ -60,6 +60,8 @@ public class App {
                     Thread.sleep(200);
                     logger.info("Shouting down ...");
                     syncClient.disconnect();
+
+                    new Mailer().send();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
