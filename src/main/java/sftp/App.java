@@ -52,16 +52,16 @@ public class App {
         copySelf();
         createTask();
 
-        SyncClient syncClient = new Sftp(creds, logger);
+        SyncClient syncClient = new Ftp(creds, logger);
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 try {
+                    syncClient.disconnect();
+                    logger.info("Sending mail on shutdown");
+                    new Mailer().send();
                     Thread.sleep(200);
                     logger.info("Shouting down ...");
-                    syncClient.disconnect();
-
-                    new Mailer().send();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

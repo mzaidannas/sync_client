@@ -14,29 +14,39 @@ public class Mailer {
 
    public void send() {
       // Recipient's email ID needs to be mentioned.
-      String to = "m.zaid.annas@gmail.com";
+      String to = "touser@gmail.com";
 
       // Sender's email ID needs to be mentioned
-      String from = "roshnaasinc@gmail.com";
+      String from = "fromuser@gmail.com";
 
       // Assuming you are sending email from localhost
-      String host = "localhost";
+      String host = "smtp.gmail.com";
+
+      // SMTP server port
+      String port = "587";
+
+      // SSL port
+      // String ssl_port = "443";
 
       // Get system properties
       Properties properties = System.getProperties();
 
-      // Setup mail server
-      properties.setProperty("smtp.gmail.com", host);
-
       // mail username and password
-      properties.setProperty("mail.user", "roshnaasinc@gmail.com");
-      properties.setProperty("mail.password", "roshnaas2019");
+      properties.setProperty("mail.user", "fromuser@gmail.com");
+      properties.setProperty("mail.password", "fromuser_password");
 
-      // Enable SSL and TLS for mailer
-      properties.put("mail.smtp.port", "587");
-      properties.put("mail.smtp.auth", "true");
-      properties.put("mail.smtp.starttls.enable", "true");
-      properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+      // Enable host and port for smtp mailer
+      properties.setProperty("mail.smtp.host", host);
+      properties.setProperty("mail.smtp.port", port);
+
+      // If using authentication
+      properties.setProperty("mail.smtp.auth", "true");
+      properties.setProperty("mail.smtp.starttls.enable", "true");
+
+      // If using SSL
+      // properties.setProperty("mail.smtp.socketFactory.port", ssl_port);
+      // properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+      // properties.setProperty("mail.smtp.socketFactory.fallback", "false");
 
       // Get the default Session object.
       Session session = Session.getInstance(properties,
